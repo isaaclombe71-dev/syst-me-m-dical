@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Système Médical</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+    <div class="logo">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <h2>Système Médical</h2>
+    </div>
+
+    <ul class="menu">
+
+        <li>
+            <a href="#" onclick="showPage('accueil')">
+                <i class="fa-solid fa-house"></i>
+                <span>Accueil</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" onclick="showPage('enregistrement')">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Enregistrement</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" onclick="showPage('patients')">
+                <i class="fa-solid fa-users"></i>
+                <span>Liste Patients</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" onclick="toggleDarkMode()">
+                <i class="fa-solid fa-moon"></i>
+                <span>Mode sombre</span>
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- CONTENU PRINCIPAL -->
+<div class="main-content">
+
+    <!-- ACCUEIL -->
+    <div id="accueil" class="page active">
+
+        <div class="header">
+            <h1>🏥 Tableau de Bord Médical</h1>
+
+            <div class="date-box">
+                <span id="dateActuelle"></span>
+                <br>
+                <span id="heureActuelle"></span>
+            </div>
+        </div>
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <div class="icon blue">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <div>
+                    <h2 id="totalPatients">0</h2>
+                    <p>Total Patients</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon green">
+                    <i class="fa-solid fa-mars"></i>
+                </div>
+                <div>
+                    <h2 id="totalHommes">0</h2>
+                    <p>Hommes</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon pink">
+                    <i class="fa-solid fa-venus"></i>
+                </div>
+                <div>
+                    <h2 id="totalFemmes">0</h2>
+                    <p>Femmes</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="welcome-card">
+            <h2>Bienvenue 👨‍⚕️</h2>
+            <p>
+                Gérez les patients, consultez les statistiques
+                et suivez les enregistrements en temps réel.
+            </p>
+        </div>
+
+        <div class="welcome-card">
+            <h2>📈 Activité du système</h2>
+            <p>
+                Patients enregistrés aujourd'hui :
+                <span id="patientsJour">0</span>
+            </p>
+        </div>
+
+    </div>
+
+    <!-- ENREGISTREMENT -->
+    <div id="enregistrement" class="page">
+
+        <div class="form-container">
+
+            <div class="form-header">
+                <h1>📝 Enregistrement Patient</h1>
+                <p>Ajoutez un nouveau patient au système médical</p>
+            </div>
+
+            <form id="patientForm">
+
+                <div class="form-grid">
+
+                    <div class="input-box">
+                        <label>Nom complet</label>
+                        <input type="text" id="nom" placeholder="Ex: Isaac Lombe" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label>Âge</label>
+                        <input type="number" id="age" placeholder="Ex: 25" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label>Sexe</label>
+                        <select id="sexe">
+                            <option>Homme</option>
+                            <option>Femme</option>
+                        </select>
+                    </div>
+
+                    <div class="input-box">
+                        <label>Maladie</label>
+                        <input type="text" id="maladie" placeholder="Ex: Paludisme" required>
+                    </div>
+
+                    <div class="input-box full">
+                        <label>Date de consultation</label>
+                        <input type="date" id="date" required>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="save-btn">
+                    💾 Enregistrer le patient
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- PATIENTS -->
+    <div id="patients" class="page">
+
+        <div class="table-container">
+
+            <div class="table-header">
+
+                <div>
+                    <h1>📋 Liste des Patients</h1>
+                    <p>Tous les patients enregistrés</p>
+                </div>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="🔍 Rechercher un patient..."
+                    class="search-box">
+
+            </div>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Âge</th>
+                        <th>Sexe</th>
+                        <th>Maladie</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="patientsTable"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/app.js"></script>
+
+<div id="toast"></div>
+
+</body>
+</html>
